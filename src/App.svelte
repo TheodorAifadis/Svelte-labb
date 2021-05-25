@@ -9,7 +9,7 @@
 	let count8 = 0;
 	let count9 = 0;
 	let count10 = 0;
-	let budget = 30000;
+	let budget = 0;
 
 	function hyra() {
 		count1 = count1 + 500;
@@ -72,7 +72,17 @@
 		count8 = 0;
 		count9 = 0;
 		count10 = 0;
-		budget = 30000;
+		budget = 0;
+		removeMoneyInput()
+	}
+
+	function onMoney(a) {
+		let data = document.getElementById("money")
+		budget = data.value
+	}
+
+	function removeMoneyInput() {
+		let data = (document.getElementById("money").value = "")
 	}
 </script>
 
@@ -80,6 +90,16 @@
 	<h1>Månadsbudget</h1>
 
 	<h2>{budget} kr</h2>
+
+	<input
+		type="number"
+		pattern="[0-9]"
+		value=""
+		placeholder="Budget"
+		id="money"
+		on:input={onMoney}
+		style="display: block;align-self: center;margin-bottom: 20px; margin-right: auto;margin-left: auto;"
+	/>
 
 	<button on:click={hyra}>Hyra: {count1}kr</button>
 
@@ -91,7 +111,7 @@
 
 	<button on:click={mobil}>Mobil: {count5}kr</button>
 
-	<p></p>
+	<p />
 
 	<button on:click={mat}>Mat: {count6}kr</button>
 
@@ -103,7 +123,7 @@
 
 	<button on:click={sparande}>Sparande: {count10}kr</button>
 
-	<p></p>
+	<p />
 	<button on:click={reset}>Återställ</button>
 </main>
 
@@ -118,21 +138,21 @@
 	h1 {
 		color: darkgreen;
 		text-transform: uppercase;
-		font-family: 'Times New Roman', Times, serif;
+		font-family: "Times New Roman", Times, serif;
 		font-size: 4em;
 		font-weight: 100;
 	}
 
 	h2 {
 		color: darkgreen;
-		font-family: 'Times New Roman', Times, serif;
+		font-family: "Times New Roman", Times, serif;
 		font-size: 3em;
 		font-weight: 100;
 	}
 
 	button {
 		color: darkgreen;
-		font-family: 'Times New Roman', Times, serif;
+		font-family: "Times New Roman", Times, serif;
 		font-size: 2em;
 		font-weight: 100;
 		background-color: whitesmoke;
